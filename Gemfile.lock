@@ -325,13 +325,12 @@ DEPENDENCIES
   brakeman
   cloudinary
   dotenv-rails
-  erb
   factory_bot_rails
   faraday
   pg
   puma
   rack-attack
-  rack-cors
+  rack-cors (~> 3.0)
   rails (~> 7.1.6)
   redis
   rspec-rails (>= 6.1.0)
