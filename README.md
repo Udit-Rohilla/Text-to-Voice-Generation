@@ -1,7 +1,7 @@
 # Text to Voice Generation
 
 A production ready Ruby on Rails API that converts text into speech using the ElevenLabs Text to Speech API.  
-The system processes requests asynchronously using Sidekiq, stores generated audio on Cloudinary, tracks request lifecycle states, handles failures gracefully and applies rate limiting for safe and scalable usage.
+The system processes requests asynchronously using Sidekiq, stores generated audio on Cloudinary, tracks generation status, handles failures gracefully, plays generated audio in the browser, view past generation history and delete previously generated voice records.
 
 ---
 
