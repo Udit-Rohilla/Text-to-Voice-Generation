@@ -45,11 +45,12 @@ This architecture ensures heavy processing does not block API request threads.
 
 The following environment variables are required to run the application.
 
-- ELEVENLABS_API_KEY  
-- CLOUDINARY_URL  
-- DATABASE_URL  
-- REDIS_URL  
-- SECRET_KEY_BASE  
+- ELEVENLABS_API_KEY
+- CLOUDINARY_URL
+- DATABASE_URL
+- REDIS_URL
+- SECRET_KEY_BASE
+- ELEVENLABS_VOICE_ID
 
 ---
 
