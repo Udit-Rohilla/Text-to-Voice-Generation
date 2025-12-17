@@ -1,61 +1,72 @@
 # Text-to-Voice-Generation
-Built a production ready Rails API that converts text to speech using ElevenLabs. The system processes requests asynchronously with Sidekiq, stores audio on Cloudinary, tracks request states, handles errors gracefully, and applies rate limiting for safe and scalable usage.
 
-# Voice Generation API with Rails
+Built a production ready Rails API that converts text to speech using ElevenLabs. The system processes requests asynchronously with Sidekiq, stores audio on Cloudinary, tracks request states, handles errors gracefully and applies rate limiting for safe and scalable usage.
 
-## Overview
+## Voice Generation API with Rails
+
+### Overview
 This project is a Ruby on Rails API application that generates voice audio from text using the ElevenLabs API.  
 Audio generation runs asynchronously using Sidekiq and results are stored in cloud storage with a public URL returned to the client.
 
-## Tech Stack
+### Tech Stack
 - Ruby on Rails (API mode)
 - PostgreSQL
-- Sidekiq + Redis
+- Sidekiq and Redis
 - ElevenLabs Text to Speech API
 - Cloudinary for audio storage
 - RSpec for testing
 - Railway for deployment
 
-## Architecture
+### Architecture
 - POST request creates a VoiceRequest record
 - Background job generates audio via ElevenLabs
 - Audio uploaded to Cloudinary
 - Client polls status endpoint
 - URL returned when ready
 
-## Environment Variables
+### Environment Variables
 - ELEVENLABS_API_KEY
 - CLOUDINARY_URL
 - DATABASE_URL
 - REDIS_URL
 - SECRET_KEY_BASE
 
-## API Endpoints
+### API Endpoints
 
-### POST /api/v1/voice_requests
+#### POST /api/v1/voice_requests
+
 Request
+```json
 {
   "voice_request": {
     "input_text": "Hello world"
   }
 }
+```
 
 Response
+```json
 {
   "id": "uuid",
   "status": "pending"
 }
+```
 
-### GET /api/v1/voice_requests/:id
+#### GET /api/v1/voice_requests/:id
+
 Response
+```json
 {
   "id": "uuid",
   "status": "success",
   "audio_url": "https://..."
 }
+```
 
-### GET /api/v1/voice_requests
+#### GET /api/v1/voice_requests
 Returns recent history
+
+---
 
 ## Running Locally
 
@@ -65,19 +76,33 @@ Returns recent history
 redis-server
 bin/rails server
 bundle exec sidekiq
+```
 
-Step 2. Start frontend
+### Step 2. Start frontend
+
+```bash
 cd voice-ui
 npm run dev
+```
 
-Open your browser at:
+### Open your browser at
+
+```
 http://localhost:5173
+```
 
+---
 
 ## Testing
-bundle exec rspec  
+
+```bash
+bundle exec rspec
+```
+
+---
 
 ## Deployment
+
 Deploy on Railway with two services
 - Web service for Rails
 - Worker service for Sidekiq
