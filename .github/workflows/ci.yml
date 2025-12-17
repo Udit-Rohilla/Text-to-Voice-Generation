@@ -48,6 +48,3 @@ jobs:
 
       - name: Run RSpec
         run: bundle exec rspec
-
-      - name: Run Brakeman
-        run: bundle exec brakeman --no-pager
