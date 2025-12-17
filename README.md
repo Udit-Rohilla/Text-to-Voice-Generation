@@ -24,11 +24,11 @@ Audio generation runs asynchronously using Sidekiq and results are stored in clo
 - URL returned when ready
 
 ## Environment Variables
-ELEVENLABS_API_KEY
-CLOUDINARY_URL
-DATABASE_URL
-REDIS_URL
-SECRET_KEY_BASE
+- ELEVENLABS_API_KEY
+- CLOUDINARY_URL
+- DATABASE_URL
+- REDIS_URL
+- SECRET_KEY_BASE
 
 ## API Endpoints
 
@@ -58,10 +58,21 @@ Response
 Returns recent history
 
 ## Running Locally
-bundle install  
-rails db:create db:migrate  
-bundle exec sidekiq  
-rails server  
+
+### Step 1. Start backend
+
+```bash
+redis-server
+bin/rails server
+bundle exec sidekiq
+
+Step 2. Start frontend
+cd voice-ui
+npm run dev
+
+Open your browser at:
+http://localhost:5173
+
 
 ## Testing
 bundle exec rspec  
