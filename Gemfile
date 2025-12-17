@@ -22,9 +22,11 @@ group :development, :test do
   gem "rspec-rails", ">= 6.1.0"
   gem "factory_bot_rails"
   gem "webmock"
+
+  gem "rubocop", require: false
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  gem "rubocop", require: false
   gem "brakeman", require: false
 end

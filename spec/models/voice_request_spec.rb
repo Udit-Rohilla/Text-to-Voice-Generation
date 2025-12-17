@@ -8,10 +8,11 @@ RSpec.describe VoiceRequest, type: :model do
 
   it "has correct enum statuses" do
     vr = build(:voice_request)
-    expect(vr).to respond_to(:pending)
-    expect(vr).to respond_to(:processing)
-    expect(vr).to respond_to(:success)
-    expect(vr).to respond_to(:failed)
+
+    expect(vr).to be_pending
+
+    vr.processing!
+    expect(vr).to be_processing
   end
 
   it "can transition to processing" do
